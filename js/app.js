@@ -9,9 +9,17 @@ Vue.component('card', {
             <div class="card-text">
                 {{content}}
             </div>
+            <button @click="deleteArticle" class="btn btn-danger btn-sm">Delete me</button>
         </div>
     </div>
-        `
+    `,
+    methods: {
+        deleteArticle() {
+                // console.log('article is deleted');
+                // this is the way we can tell the parent we want to delete article
+                this.$emit('delete-article', this.title)
+        }
+    }
 })
 
 new Vue({
@@ -31,5 +39,12 @@ new Vue({
             content: 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give.'
         }
     ]
+    },
+    methods: {
+        removeArticle(event) {
+            // console.log(event);
+            this.articles = this.articles.filter(article => article.title !== event)
+        }
+
     }
 })
