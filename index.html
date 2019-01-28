@@ -15,10 +15,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    
-                    <card title="Vue js course" content="Some basic lorem"></card>
-                    <card title="Laravel course" content="Some basic lorem"></card>
-                    <card title="Reacgt course" content="Some basic lorem"></card>
+                    <card v-for="article in articles" :title="article.title" :content="article.content"></card>
+                    <!-- by adding ":" at the begining of title and content variable we tell the vue they are dynamical variables. -->
                 </div>
             </div>
         </div>
